@@ -7,9 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "ingest": "tsx --env-file=.env.local scripts/ingest.ts",
     "test:chunker": "tsx scripts/test-chunker.ts",
     "test:read-docs": "tsx --env-file=.env.local scripts/test-read-docs.ts",
-    "ingest": "tsx --env-file=.env.local scripts/ingest.ts"
+    "test:vector": "tsx --env-file=.env.local scripts/test-vector-search.ts",
+    "test:bm25": "tsx --env-file=.env.local scripts/test-bm25-search.ts",
+    "test:hybrid": "tsx --env-file=.env.local scripts/test-hybrid-search.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.71",
