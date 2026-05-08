@@ -1,7 +1,7 @@
 
 import { chunkText } from "./chunker";
-import { generateEmbeddings } from "./embedder";
 import { readAllDocs } from "./readDocs";
+import { embedTexts } from "@/shared/lib/embeddings";
 import {
   deleteChunksByDocument,
   insertChunks,
@@ -41,7 +41,7 @@ async function ingestDoc(doc: ParsedDocument): Promise<IngestResult> {
     return { documentId: doc.metadata.id, chunksCreated: 0 };
   }
 
-  const embeddings = await generateEmbeddings(chunks.map((c) => c.content));
+  const embeddings = await embedTexts(chunks.map((c) => c.content));
 
   const chunksWithEmbeddings: ChunkWithEmbedding[] = chunks.map((chunk, i) => ({
     chunkIndex: chunk.chunkIndex,
