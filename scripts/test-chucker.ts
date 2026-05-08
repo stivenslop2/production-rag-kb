@@ -1,4 +1,4 @@
-import { chunkText } from "@/features/ingestion/chucker";
+import { chunkText } from "@/features/ingestion/chunker";
 import fs from "node:fs";
 import path from "node:path";
 

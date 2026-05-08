@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:chunker": "tsx scripts/test-chucker.ts"
+    "test:chunker": "tsx scripts/test-chunker.ts",
+    "test:read-docs": "tsx --env-file=.env.local scripts/test-read-docs.ts",
+    "ingest": "tsx --env-file=.env.local scripts/ingest.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.71",
@@ -15,6 +17,7 @@
     "@supabase/supabase-js": "^2.105.3",
     "ai": "^6.0.168",
     "cohere-ai": "^8.0.0",
+    "gray-matter": "^4.0.3",
     "next": "16.2.4",
     "openai": "^6.36.0",
     "react": "19.2.4",
