@@ -17,13 +17,3 @@ export interface ChunkWithEmbedding {
   embedding: number[];
 }
 
-export interface SearchResult {
-  id: string;
-  documentId: string;
-  documentTitle: string;
-  documentSourceUrl: string | null;
-  documentCategory: string;
-  chunkIndex: number;
-  content: string;
-  score: number;
-}
