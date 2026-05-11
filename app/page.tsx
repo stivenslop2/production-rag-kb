@@ -5,6 +5,7 @@ import { DefaultChatTransport } from "ai";
 import { useEffect, useRef } from "react";
 import { ChatMessage } from "../features/chat/components/ChatMessage";
 import { ChatInput } from "../features/chat/components/ChatInput";
+import { EmptyState } from "../features/chat/components/EmptyState";
 
 export default function Home() {
   const { messages, sendMessage, status } = useChat({
@@ -18,6 +19,7 @@ export default function Home() {
   }, [messages]);
 
   const isBusy = status === "submitted" || status === "streaming";
+  const isEmpty = messages.length === 0;
 
   return (
     <div className="flex flex-col h-screen bg-slate-50">
@@ -34,9 +36,11 @@ export default function Home() {
 
       <main className="flex-1 overflow-y-auto">
         <div className="mx-auto max-w-3xl px-6 py-6 space-y-6">
-          {messages.map((m) => (
-            <ChatMessage key={m.id} message={m} />
-          ))}
+          {isEmpty ? (
+            <EmptyState onSuggestionClick={(text) => sendMessage({ text })} />
+          ) : (
+            messages.map((m) => <ChatMessage key={m.id} message={m} />)
+          )}
           <div ref={bottomRef} />
         </div>
       </main>
