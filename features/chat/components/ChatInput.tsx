@@ -35,7 +35,8 @@ export function ChatInput({ onSubmit, disabled }: ChatInputProps) {
             placeholder="Ask about the Orbiill docs..."
             rows={1}
             disabled={disabled}
-            className="flex-1 resize-none bg-transparent outline-none text-slate-900 placeholder:text-slate-400 max-h-32"
+            className="flex-1 resize-none bg-transparent outline-none text-slate-900 placeholder:text-slate-400 max-h-32 caret-[#1E40AF]"
+            style={{ color: "#0F172A" }}
           />
           <button
             onClick={handleSubmit}

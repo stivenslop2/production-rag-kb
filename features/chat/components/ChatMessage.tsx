@@ -1,4 +1,5 @@
 import { UIMessage } from "ai";
+import { MessageContent } from "./MessageContent";
 
 interface ChatMessageProps {
   message: UIMessage;
@@ -24,8 +25,8 @@ export function ChatMessage({ message }: ChatMessageProps) {
 
   return (
     <div className="flex justify-start">
-      <div className="max-w-[85%] text-slate-800 whitespace-pre-wrap">
-        {textContent}
+      <div className="max-w-[85%]">
+        <MessageContent content={textContent} />
       </div>
     </div>
   );
