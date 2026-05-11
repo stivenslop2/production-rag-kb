@@ -1,6 +1,7 @@
 import { UIMessage } from "ai";
 import { MessageContent } from "./MessageContent";
 import { ToolIndicator } from "./ToolIndicator";
+import { Citations } from "./Citations";
 
 interface ChatMessageProps {
   message: UIMessage;
@@ -11,7 +12,17 @@ interface ToolPart {
   toolCallId: string;
   state?: string;
   input?: { query?: string };
-  output?: unknown;
+  output?: {
+    found?: boolean;
+    confidence?: string;
+    chunks?: Array<{
+      id: string;
+      documentTitle: string;
+      chunkIndex: number;
+      content: string;
+      relevanceScore: number;
+    }>;
+  };
 }
 
 export function ChatMessage({ message }: ChatMessageProps) {
@@ -32,11 +43,27 @@ export function ChatMessage({ message }: ChatMessageProps) {
     );
   }
 
+  // Recolectar todos los chunks únicos de todas las tool calls del mensaje
+  const allChunks = new Map<string, NonNullable<NonNullable<ToolPart["output"]>["chunks"]>[number]>();
+  message.parts.forEach((part) => {
+    if (part.type.startsWith("tool-")) {
+      const toolPart = part as ToolPart;
+      toolPart.output?.chunks?.forEach((chunk) => {
+        if (!allChunks.has(chunk.id)) {
+          allChunks.set(chunk.id, chunk);
+        }
+      });
+    }
+  });
+
+  const uniqueChunks = Array.from(allChunks.values()).sort(
+    (a, b) => b.relevanceScore - a.relevanceScore,
+  );
+
   return (
     <div className="flex justify-start">
       <div className="max-w-[85%] w-full">
         {message.parts.map((part, idx) => {
-          // Texto normal del assistant
           if (part.type === "text") {
             return (
               <MessageContent
@@ -46,7 +73,6 @@ export function ChatMessage({ message }: ChatMessageProps) {
             );
           }
 
-          // Tool calls — el type viene como "tool-{toolName}"
           if (part.type.startsWith("tool-")) {
             const toolPart = part as ToolPart;
             const toolName = part.type.replace("tool-", "");
@@ -64,6 +90,8 @@ export function ChatMessage({ message }: ChatMessageProps) {
 
           return null;
         })}
+
+        <Citations chunks={uniqueChunks} />
       </div>
     </div>
   );
