@@ -1,6 +1,6 @@
 import { supabase } from "@/shared/lib/supabase";
 import { embedQuery } from "@/shared/lib/embeddings";
-import { SearchResult } from "../ingestion/types";
+import { SearchResult } from "./types";
 
 export async function vectorSearch(
   query: string,

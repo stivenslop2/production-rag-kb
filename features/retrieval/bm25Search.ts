@@ -1,5 +1,6 @@
 import { supabase } from "@/shared/lib/supabase";
-import { SearchResult } from "../ingestion/types";
+import { SearchResult } from "./types";
+
 
 export async function bm25Search(
   query: string,

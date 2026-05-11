@@ -12,7 +12,9 @@
     "test:read-docs": "tsx --env-file=.env.local scripts/test-read-docs.ts",
     "test:vector": "tsx --env-file=.env.local scripts/test-vector-search.ts",
     "test:bm25": "tsx --env-file=.env.local scripts/test-bm25-search.ts",
-    "test:hybrid": "tsx --env-file=.env.local scripts/test-hybrid-search.ts"
+    "test:hybrid": "tsx --env-file=.env.local scripts/test-hybrid-search.ts",
+    "test:rerank": "tsx --env-file=.env.local scripts/test-rerank.ts",
+    "test:pipeline": "tsx --env-file=.env.local scripts/test-search-pipeline.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.71",
