@@ -1,16 +1,50 @@
+"use client";
+
+import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
+import { useEffect, useRef } from "react";
+import { ChatMessage } from "../features/chat/components/ChatMessage";
+import { ChatInput } from "../features/chat/components/ChatInput";
+
 export default function Home() {
+  const { messages, sendMessage, status } = useChat({
+    transport: new DefaultChatTransport({ api: "/api/chat" }),
+  });
+
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const isBusy = status === "submitted" || status === "streaming";
+
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen gap-6 p-8">
-      <h1 className="text-4xl font-bold text-brand-500">
-        Orbiill Knowledge Base
-      </h1>
-      <p className="text-ink-muted text-lg text-center max-w-xl">
-        Production-grade RAG over Orbiill documentation. Hybrid search (BM25 + vector + RRF), Cohere reranking, and retrieval metrics.
-      </p>
-      <div className="flex gap-4 mt-4">
-        <a href="/search" className="px-6 py-3 bg-brand-500 text-white rounded-lg font-medium hover:bg-brand-600 transition-colors">Search docs</a>
-        <a href="/chat" className="px-6 py-3 border border-border rounded-lg font-medium text-ink hover:bg-surface-subtle transition-colors">Chat with KB</a>
-      </div>
-    </main>
+    <div className="flex flex-col h-screen bg-slate-50">
+      <header className="border-b border-slate-200 bg-white px-6 py-4">
+        <div className="mx-auto max-w-3xl">
+          <h1 className="text-lg font-semibold text-slate-900">
+            Orbiill Docs Assistant
+          </h1>
+          <p className="text-xs text-slate-500">
+            RAG over Orbiill documentation · hybrid search + Cohere rerank
+          </p>
+        </div>
+      </header>
+
+      <main className="flex-1 overflow-y-auto">
+        <div className="mx-auto max-w-3xl px-6 py-6 space-y-6">
+          {messages.map((m) => (
+            <ChatMessage key={m.id} message={m} />
+          ))}
+          <div ref={bottomRef} />
+        </div>
+      </main>
+
+      <ChatInput
+        onSubmit={(text) => sendMessage({ text })}
+        disabled={isBusy}
+      />
+    </div>
   );
 }
