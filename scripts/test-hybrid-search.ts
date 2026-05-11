@@ -5,12 +5,12 @@ async function main() {
 
   console.log(`Query: "${query}"\n`);
 
-  const results = await hybridSearch(query, 5);
+  const results = await hybridSearch(query, { limit: 5 });
 
   console.log(`Top ${results.length} results:\n`);
   results.forEach((r, i) => {
     console.log(
-      `${i + 1}. [${r.documentId} #${r.chunkIndex}] RRF score: ${r.score.toFixed(4)}`,
+      `${i + 1}. [${r.documentId} #${r.chunkIndex}] RRF: ${r.score.toFixed(4)} | vRank: ${r.vectorRank} | bm25Rank: ${r.bm25Rank}`,
     );
     console.log(`   ${r.content.slice(0, 120).replace(/\n/g, " ")}...\n`);
   });
