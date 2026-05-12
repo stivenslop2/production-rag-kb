@@ -1,0 +1,336 @@
+[
+  {
+    "chunkId": "742ce4bf-4415-4efa-b6f5-f9d200e66594",
+    "documentTitle": "Frequently Asked Questions",
+    "chunkIndex": 0,
+    "queries": {
+      "literal": "What is Orbiill billing infrastructure for software companies",
+      "conversational": "How does Orbiill help me set up billing with Stripe"
+    }
+  },
+  {
+    "chunkId": "78c6f8b3-593e-4010-a5cd-ceaff10fde46",
+    "documentTitle": "Webhooks",
+    "chunkIndex": 0,
+    "queries": {
+      "literal": "How to set up webhook endpoint in Orbiill dashboard settings",
+      "conversational": "How do I get Orbiill to notify my app when something happens"
+    }
+  },
+  {
+    "chunkId": "6194d455-927f-4e41-9bfe-8b2616004e09",
+    "documentTitle": "API Reference",
+    "chunkIndex": 0,
+    "queries": {
+      "literal": "Orbiill API base URL authentication rate limits",
+      "conversational": "how do I connect to the Orbiill billing API"
+    }
+  },
+  {
+    "chunkId": "ccc16a56-0e53-4fb6-9ff8-4b38d2a8063c",
+    "documentTitle": "TypeScript SDK",
+    "chunkIndex": 0,
+    "queries": {
+      "literal": "TypeScript SDK installation authentication retries pagination error parsing",
+      "conversational": "how do I install and use the Orbiill SDK for Node.js"
+    }
+  },
+  {
+    "chunkId": "552cc918-a2cc-4322-8f38-5e187f454405",
+    "documentTitle": "Getting Started",
+    "chunkIndex": 0,
+    "queries": {
+      "literal": "Create Orbiill account and connect Stripe integration setup guide",
+      "conversational": "How do I set up my account and connect Stripe?"
+    }
+  },
+  {
+    "chunkId": "e797d60c-722a-4df4-9540-55bb4ae01a1a",
+    "documentTitle": "API Reference",
+    "chunkIndex": 1,
+    "queries": {
+      "literal": "Orbiill API rate limits per organization requests per second",
+      "conversational": "How many API requests can I make per second in Orbiill?"
+    }
+  },
+  {
+    "chunkId": "aa7e1216-91a7-4a63-8cd8-7d146eefe286",
+    "documentTitle": "Frequently Asked Questions",
+    "chunkIndex": 1,
+    "queries": {
+      "literal": "Where are Orbiill billing objects stored Stripe account",
+      "conversational": "Does Orbiill store my billing data or does it stay in Stripe"
+    }
+  },
+  {
+    "chunkId": "f27d2653-f975-4c12-8af6-d6c10d9b40ce",
+    "documentTitle": "Webhooks",
+    "chunkIndex": 1,
+    "queries": {
+      "literal": "Orbiill webhook event types subscription invoice created updated canceled",
+      "conversational": "what events can I listen to with Orbiill webhooks"
+    }
+  },
+  {
+    "chunkId": "502dad15-f433-4617-9ada-5c530c8a5cd2",
+    "documentTitle": "TypeScript SDK",
+    "chunkIndex": 1,
+    "queries": {
+      "literal": "TypeScript SDK resources plans subscriptions customers webhooks usage methods",
+      "conversational": "How do I list and create billing plans using the SDK?"
+    }
+  },
+  {
+    "chunkId": "89bafea8-3ef9-4eaf-aea2-161d4b03c654",
+    "documentTitle": "Getting Started",
+    "chunkIndex": 1,
+    "queries": {
+      "literal": "Orbiill AI parses pricing description generates Products Prices Features",
+      "conversational": "How do I set up my first pricing plan in Orbiill?"
+    }
+  },
+  {
+    "chunkId": "e822840b-b997-4001-9e41-ab49f74f17cd",
+    "documentTitle": "TypeScript SDK",
+    "chunkIndex": 2,
+    "queries": {
+      "literal": "TypeScript SDK subscriptions list active plan customers get pagination",
+      "conversational": "How do I query subscriptions and customer data in Orbiill?"
+    }
+  },
+  {
+    "chunkId": "f53e35ac-fae4-47b7-9eb4-15a767b7c1e1",
+    "documentTitle": "API Reference",
+    "chunkIndex": 2,
+    "queries": {
+      "literal": "GET /api/v1/plans/{plan_id} returns 404 if plan does not exist",
+      "conversational": "how do I create a new draft billing plan in Orbiill"
+    }
+  },
+  {
+    "chunkId": "72c7a6ed-32f0-46d8-a898-aa94d17a9d89",
+    "documentTitle": "Frequently Asked Questions",
+    "chunkIndex": 2,
+    "queries": {
+      "literal": "Where are billing objects stored in Orbiill and Stripe?",
+      "conversational": "Does Orbiill store my pricing data or does Stripe?"
+    }
+  },
+  {
+    "chunkId": "cfc40dac-b5d7-4fe4-928f-401a2754f867",
+    "documentTitle": "Webhooks",
+    "chunkIndex": 2,
+    "queries": {
+      "literal": "Orbiill webhook invoice events payment succeeded failed finalized",
+      "conversational": "what webhook events does Orbiill send when invoices are created or paid"
+    }
+  },
+  {
+    "chunkId": "c9140e0c-7723-43db-ac85-46fa9dacdbb0",
+    "documentTitle": "Getting Started",
+    "chunkIndex": 2,
+    "queries": {
+      "literal": "Orbiill AI parses description generates structured billing configuration Products Prices Features",
+      "conversational": "How does Orbiill automatically create my billing plans from a description?"
+    }
+  },
+  {
+    "chunkId": "edf16ad9-aefb-455f-9edd-6737287dcdf8",
+    "documentTitle": "Webhooks",
+    "chunkIndex": 3,
+    "queries": {
+      "literal": "How to verify Orbiill webhook signature with HMAC-SHA256",
+      "conversational": "How do I verify webhooks are really from Orbiill"
+    }
+  },
+  {
+    "chunkId": "f224ac2f-b439-4260-84e3-dc53566e8d03",
+    "documentTitle": "TypeScript SDK",
+    "chunkIndex": 3,
+    "queries": {
+      "literal": "Orbiill TypeScript SDK pagination nextCursor paginate helper for list endpoints",
+      "conversational": "how do I loop through all results from Orbiill API calls"
+    }
+  },
+  {
+    "chunkId": "0a4d52dc-f2ca-4b51-929c-d9c9b50a44f8",
+    "documentTitle": "Getting Started",
+    "chunkIndex": 3,
+    "queries": {
+      "literal": "Orbiill billing configs validation before deployment 400 error",
+      "conversational": "Why am I getting an error when trying to deploy my billing configuration?"
+    }
+  },
+  {
+    "chunkId": "4e0a7ed6-1b9e-4b33-88ba-950119162ccd",
+    "documentTitle": "API Reference",
+    "chunkIndex": 3,
+    "queries": {
+      "literal": "POST /api/v1/plans/{plan_id}/validate and deploy plan endpoints",
+      "conversational": "how do I validate and deploy a billing plan in Orbiill"
+    }
+  },
+  {
+    "chunkId": "e1ea6074-9ec6-4a71-8a93-570dc84acfc3",
+    "documentTitle": "Frequently Asked Questions",
+    "chunkIndex": 3,
+    "queries": {
+      "literal": "What happens if a plan deployment fails halfway through Orbiill?",
+      "conversational": "What if my billing plan deployment crashes in the middle?"
+    }
+  },
+  {
+    "chunkId": "46aa22ff-3bd2-4433-a322-a4a341cc4014",
+    "documentTitle": "Frequently Asked Questions",
+    "chunkIndex": 4,
+    "queries": {
+      "literal": "Will I be charged Stripe fees on top of Orbiill fees?",
+      "conversational": "Do I have to pay Stripe's charges plus Orbiill's charges?"
+    }
+  },
+  {
+    "chunkId": "30845a85-e1da-4957-92e6-d7591063ced8",
+    "documentTitle": "TypeScript SDK",
+    "chunkIndex": 4,
+    "queries": {
+      "literal": "Orbiill TypeScript SDK error handling ValidationError RateLimitError AuthenticationError",
+      "conversational": "How do I catch and handle errors in Orbiill SDK?"
+    }
+  },
+  {
+    "chunkId": "e31b0134-00a6-4475-9363-17fafcc943f0",
+    "documentTitle": "Webhooks",
+    "chunkIndex": 4,
+    "queries": {
+      "literal": "How to verify Orbiill webhook signature using HMAC-SHA256",
+      "conversational": "How do I check if a webhook from Orbiill is legitimate"
+    }
+  },
+  {
+    "chunkId": "96fa92ce-284b-42c9-9705-fcd18d338c83",
+    "documentTitle": "API Reference",
+    "chunkIndex": 4,
+    "queries": {
+      "literal": "Orbiill API subscriptions endpoint filtering by plan customer status",
+      "conversational": "how do I get a list of subscriptions from the API"
+    }
+  },
+  {
+    "chunkId": "f07af9fb-6934-4c1e-ad9c-f5f61c5f11a4",
+    "documentTitle": "Getting Started",
+    "chunkIndex": 4,
+    "queries": {
+      "literal": "Orbiill webhook delivery HMAC-SHA256 signing secret verification",
+      "conversational": "how do I verify that webhooks are really from Orbiill"
+    }
+  },
+  {
+    "chunkId": "5020fc86-8346-416b-a0e9-5a0ce2610b8d",
+    "documentTitle": "TypeScript SDK",
+    "chunkIndex": 5,
+    "queries": {
+      "literal": "TypeScript SDK automatic retry configuration exponential backoff network errors",
+      "conversational": "How does the SDK handle failed requests and retry them automatically?"
+    }
+  },
+  {
+    "chunkId": "5f0816f9-9fac-4d10-adf7-1bef10ae1151",
+    "documentTitle": "API Reference",
+    "chunkIndex": 5,
+    "queries": {
+      "literal": "Orbiill API cursor-based pagination and idempotency key header usage",
+      "conversational": "How do I safely retry failed requests and page through results?"
+    }
+  },
+  {
+    "chunkId": "ba875077-8b06-41c9-946d-594923907d8f",
+    "documentTitle": "Frequently Asked Questions",
+    "chunkIndex": 5,
+    "queries": {
+      "literal": "How is my Stripe account protected with Orbiill OAuth permissions",
+      "conversational": "Is my Stripe account safe when I connect it to Orbiill"
+    }
+  },
+  {
+    "chunkId": "f2e6d394-acfd-4a56-9dfd-71cfe96aa06e",
+    "documentTitle": "Webhooks",
+    "chunkIndex": 5,
+    "queries": {
+      "literal": "TypeScript webhook signature verification with HMAC SHA256 and timestamp tolerance",
+      "conversational": "how do I verify webhook signatures in my Node.js app"
+    }
+  },
+  {
+    "chunkId": "f1d73863-e62a-4225-a0cc-769f1d8396a7",
+    "documentTitle": "Webhooks",
+    "chunkIndex": 6,
+    "queries": {
+      "literal": "Orbiill webhook signature verification crypto.timingSafeEqual raw request body",
+      "conversational": "How do I properly verify webhook signatures to avoid timing attacks?"
+    }
+  },
+  {
+    "chunkId": "24a611dd-6f92-46b5-bb68-84c8a9cf88c3",
+    "documentTitle": "TypeScript SDK",
+    "chunkIndex": 6,
+    "queries": {
+      "literal": "Orbiill SDK webhook signature verification verifyWebhookSignature function",
+      "conversational": "how do I verify webhook signatures in Orbiill"
+    }
+  },
+  {
+    "chunkId": "7555a1a8-10a0-446f-98f4-10694114c43e",
+    "documentTitle": "Frequently Asked Questions",
+    "chunkIndex": 6,
+    "queries": {
+      "literal": "webhook delivery HTTPS HMAC-SHA256 signature authenticity verification",
+      "conversational": "how can I verify that webhooks are actually from Orbiill"
+    }
+  },
+  {
+    "chunkId": "f12dd3f4-a71f-4492-ad43-0f2b93ce56c5",
+    "documentTitle": "Webhooks",
+    "chunkIndex": 7,
+    "queries": {
+      "literal": "Orbiill webhook retry schedule exponential backoff timing",
+      "conversational": "how long does Orbiill wait between webhook retries"
+    }
+  },
+  {
+    "chunkId": "b7581ea1-2a76-40f5-9cb1-5dbdc1268160",
+    "documentTitle": "TypeScript SDK",
+    "chunkIndex": 7,
+    "queries": {
+      "literal": "Orbiill TypeScript SDK best practices API key environment variables",
+      "conversational": "what are the recommended practices for using the Orbiill SDK"
+    }
+  },
+  {
+    "chunkId": "dc5f7337-f933-431a-bc5d-b3ea1f6e92e0",
+    "documentTitle": "Webhooks",
+    "chunkIndex": 8,
+    "queries": {
+      "literal": "deduplicate webhook events by storing event id field and skipping processed events",
+      "conversational": "how do I prevent processing the same webhook twice in Orbiill"
+    }
+  },
+  {
+    "chunkId": "6d84aa19-b6ab-4312-8ef9-52dc55b906a6",
+    "documentTitle": "Webhooks",
+    "chunkIndex": 9,
+    "queries": {
+      "literal": "Orbiill webhook local development ngrok tunneling tool setup",
+      "conversational": "how do I test webhooks locally during development"
+    }
+  },
+  {
+    "chunkId": "975ed8a9-105e-4196-aca9-7a5897b63892",
+    "documentTitle": "Webhooks",
+    "chunkIndex": 10,
+    "queries": {
+      "literal": "webhook endpoint returns 2xx within 10 seconds signature verification requirements",
+      "conversational": "why aren't my webhooks working and signature checks failing",
+      "reasoning": "This chunk contains specific troubleshooting information for webhook configuration and signature verification issues. The literal query uses exact technical terms from the chunk (2xx, signature, endpoint). The conversational query captures how a frustrated user would naturally ask about webhook failures without knowing the specific technical details."
+    }
+  }
+]
