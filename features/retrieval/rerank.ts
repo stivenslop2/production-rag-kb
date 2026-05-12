@@ -1,5 +1,5 @@
 import { cohere, RERANK_MODEL } from "../../shared/lib/cohere";
-import { RerankResult } from "./types";
+import { RerankResult } from "@/shared/types";
 
 
 

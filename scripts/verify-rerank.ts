@@ -6,11 +6,9 @@ async function main() {
 
   console.log(`Query: "${query}"\n`);
 
-  // Paso 1: hybrid search trae los candidatos
   const candidates = await hybridSearch(query, { limit: 20 });
   console.log(`Hybrid search returned ${candidates.length} candidates\n`);
 
-  // Paso 2: rerank
   const texts = candidates.map((c) => c.content);
   const reranked = await rerank(query, texts);
 

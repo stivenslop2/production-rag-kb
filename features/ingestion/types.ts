@@ -1,10 +1,4 @@
-export interface DocumentMetadata {
-  id: string;
-  title: string;
-  description: string | null;
-  sourceUrl: string | null;
-  category: string;
-}
+import type { DocumentMetadata } from "@/shared/types";
 
 export interface ParsedDocument {
   metadata: DocumentMetadata;
@@ -16,4 +10,3 @@ export interface ChunkWithEmbedding {
   content: string;
   embedding: number[];
 }
-

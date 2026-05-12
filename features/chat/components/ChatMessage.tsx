@@ -2,27 +2,10 @@ import { UIMessage } from "ai";
 import { MessageContent } from "./MessageContent";
 import { ToolIndicator } from "./ToolIndicator";
 import { Citations } from "./Citations";
+import type { ToolPart } from "../types";
 
 interface ChatMessageProps {
   message: UIMessage;
-}
-
-interface ToolPart {
-  type: string;
-  toolCallId: string;
-  state?: string;
-  input?: { query?: string };
-  output?: {
-    found?: boolean;
-    confidence?: string;
-    chunks?: Array<{
-      id: string;
-      documentTitle: string;
-      chunkIndex: number;
-      content: string;
-      relevanceScore: number;
-    }>;
-  };
 }
 
 export function ChatMessage({ message }: ChatMessageProps) {
@@ -43,7 +26,6 @@ export function ChatMessage({ message }: ChatMessageProps) {
     );
   }
 
-  // Recolectar todos los chunks únicos de todas las tool calls del mensaje
   const allChunks = new Map<string, NonNullable<NonNullable<ToolPart["output"]>["chunks"]>[number]>();
   message.parts.forEach((part) => {
     if (part.type.startsWith("tool-")) {

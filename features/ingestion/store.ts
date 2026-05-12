@@ -1,5 +1,6 @@
 import { supabase } from "@/shared/lib/supabase";
-import type { ChunkWithEmbedding, DocumentMetadata } from "./types";
+import type { DocumentMetadata } from "@/shared/types";
+import type { ChunkWithEmbedding } from "./types";
 
 export async function upsertDocument(
   metadata: DocumentMetadata,

@@ -1,10 +1,9 @@
-import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { runStrategy, StrategyName } from "../features/retrieval/strategies";
+import { loadGoldenTasks, runEvalForStrategy } from "@/features/eval/runner";
+import type { StrategyMetrics } from "@/features/eval/types";
+import type { StrategyName } from "@/features/retrieval/strategies";
 
 const GOLDEN_PATH = path.join("data", "eval", "golden.json");
-const EVAL_TOP_N = 20;
-const PRECISION_K = 5;
 
 const STRATEGIES: StrategyName[] = [
   "hybrid+rerank",
@@ -12,126 +11,6 @@ const STRATEGIES: StrategyName[] = [
   "vector",
   "bm25",
 ];
-
-interface GoldenEntry {
-  chunkId: string;
-  documentTitle: string;
-  chunkIndex: number;
-  queries: {
-    literal: string;
-    conversational: string;
-  } | null;
-}
-
-interface Task {
-  query: string;
-  difficulty: "literal" | "conversational";
-  expectedChunkId: string;
-  expectedDoc: string;
-  expectedIndex: number;
-}
-
-interface QueryResult {
-  difficulty: "literal" | "conversational";
-  position: number | null;
-}
-
-interface StrategyMetrics {
-  strategy: StrategyName;
-  precisionAtK: number;
-  mrr: number;
-  ndcg: number;
-  top1Rate: number;
-  top5Rate: number;
-  hitRate: number;
-  top1Literal: number;
-  top1Conversational: number;
-  top5Literal: number;
-  top5Conversational: number;
-}
-
-function calculateMetrics(
-  strategy: StrategyName,
-  results: QueryResult[],
-): StrategyMetrics {
-  const total = results.length;
-
-  const precisionAtK =
-    results.reduce((sum, r) => {
-      if (r.position !== null && r.position <= PRECISION_K) {
-        return sum + 1 / PRECISION_K;
-      }
-      return sum;
-    }, 0) / total;
-
-  const mrr =
-    results.reduce((sum, r) => {
-      if (r.position === null) return sum;
-      return sum + 1 / r.position;
-    }, 0) / total;
-
-  const ndcg =
-    results.reduce((sum, r) => {
-      if (r.position === null || r.position > PRECISION_K) return sum;
-      return sum + 1 / Math.log2(r.position + 1);
-    }, 0) / total;
-
-  const rate = (filter: (r: QueryResult) => boolean) =>
-    results.filter(filter).length / total;
-
-  const literal = results.filter((r) => r.difficulty === "literal");
-  const conversational = results.filter((r) => r.difficulty === "conversational");
-
-  const rateIn = (rs: QueryResult[], max: number) =>
-    rs.filter((r) => r.position !== null && r.position <= max).length / rs.length;
-
-  return {
-    strategy,
-    precisionAtK,
-    mrr,
-    ndcg,
-    top1Rate: rate((r) => r.position === 1),
-    top5Rate: rate((r) => r.position !== null && r.position <= 5),
-    hitRate: rate((r) => r.position !== null),
-    top1Literal: rateIn(literal, 1),
-    top1Conversational: rateIn(conversational, 1),
-    top5Literal: rateIn(literal, 5),
-    top5Conversational: rateIn(conversational, 5),
-  };
-}
-
-async function runEvalForStrategy(
-  strategy: StrategyName,
-  tasks: Task[],
-): Promise<StrategyMetrics> {
-  console.log(`\n${"─".repeat(60)}`);
-  console.log(`Strategy: ${strategy}`);
-  console.log(`${"─".repeat(60)}`);
-
-  const results: QueryResult[] = [];
-
-  for (let i = 0; i < tasks.length; i++) {
-    const task = tasks[i];
-    const ids = await runStrategy(strategy, task.query, EVAL_TOP_N);
-
-    const position = ids.indexOf(task.expectedChunkId) + 1 || null;
-
-    results.push({ difficulty: task.difficulty, position });
-
-    const status =
-      position === null
-        ? "MISS"
-        : position === 1
-          ? " #1 "
-          : `#${position.toString().padStart(2, " ")} `;
-
-    console.log(
-      `[${(i + 1).toString().padStart(2, " ")}/${tasks.length}] ${status} ${task.difficulty.padEnd(14)} ${task.expectedDoc} #${task.expectedIndex}`,
-    );
-  }
-
-  return calculateMetrics(strategy, results);
-}
 
 function printComparisonTable(metrics: StrategyMetrics[]) {
   console.log(`\n${"=".repeat(80)}`);
@@ -170,33 +49,28 @@ function printComparisonTable(metrics: StrategyMetrics[]) {
 }
 
 async function main() {
-  const raw = await readFile(GOLDEN_PATH, "utf-8");
-  const golden = JSON.parse(raw) as GoldenEntry[];
-
-  const tasks: Task[] = [];
-  for (const entry of golden) {
-    if (!entry.queries) continue;
-    tasks.push({
-      query: entry.queries.literal,
-      difficulty: "literal",
-      expectedChunkId: entry.chunkId,
-      expectedDoc: entry.documentTitle,
-      expectedIndex: entry.chunkIndex,
-    });
-    tasks.push({
-      query: entry.queries.conversational,
-      difficulty: "conversational",
-      expectedChunkId: entry.chunkId,
-      expectedDoc: entry.documentTitle,
-      expectedIndex: entry.chunkIndex,
-    });
-  }
+  const tasks = await loadGoldenTasks(GOLDEN_PATH);
 
   console.log(`Running eval on ${tasks.length} queries × ${STRATEGIES.length} strategies\n`);
 
   const allMetrics: StrategyMetrics[] = [];
   for (const strategy of STRATEGIES) {
-    const metrics = await runEvalForStrategy(strategy, tasks);
+    console.log(`\n${"─".repeat(60)}`);
+    console.log(`Strategy: ${strategy}`);
+    console.log(`${"─".repeat(60)}`);
+
+    const metrics = await runEvalForStrategy(strategy, tasks, (i, total, task, position) => {
+      const status =
+        position === null
+          ? "MISS"
+          : position === 1
+            ? " #1 "
+            : `#${position.toString().padStart(2, " ")} `;
+
+      console.log(
+        `[${(i + 1).toString().padStart(2, " ")}/${total}] ${status} ${task.difficulty.padEnd(14)} ${task.expectedDoc} #${task.expectedIndex}`,
+      );
+    });
     allMetrics.push(metrics);
   }
 

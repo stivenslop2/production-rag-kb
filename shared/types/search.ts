@@ -18,3 +18,8 @@ export interface RerankedResult extends HybridSearchResult {
   rerankScore: number;
   rerankPosition: number;
 }
+
+export interface RerankResult {
+  index: number;
+  relevanceScore: number;
+}
