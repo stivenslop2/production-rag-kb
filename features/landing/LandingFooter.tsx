@@ -16,7 +16,7 @@ export function LandingFooter() {
             &middot;
           </span>
           <a
-            href="https://www.linkedin.com/in/stiven-julian-lopez/"
+            href="https://www.linkedin.com/in/jstivenslopez/"
             target="_blank"
             rel="noreferrer"
             className="hover:text-brand-600 transition-colors"
