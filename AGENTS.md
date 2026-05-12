@@ -23,14 +23,15 @@ All code, UI strings, and comments are in English.
 app/                        Routing + thin page wrappers only
   api/
     chat/route.ts           POST — streaming chat with RAG context
-  page.tsx                  Chat interface (root)
+  page.tsx                  Landing page (thin composition of features/landing/*)
+  chat/page.tsx             Chat interface (/chat)
   search/page.tsx           [planned] Search explorer with retrieval traces — not yet implemented
 features/
   ingestion/                Document chunking, embedding, and DB storage
   retrieval/                Vector search, BM25, RRF fusion, reranking
   chat/                     Chat UI components + searchKnowledge tool
   eval/                     Metrics (precision@k, MRR, NDCG) + golden-set runner
-  landing/                  [placeholder] Future landing page components
+  landing/                  Landing page components (Header, Hero, Skills, TryIt, HowItWorks, Footer)
 shared/
   lib/                      Library wrappers (supabase, embeddings, cohere)
   types/                    Cross-feature types (search, document)
