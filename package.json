@@ -14,18 +14,22 @@
     "test:bm25": "tsx --env-file=.env.local scripts/test-bm25-search.ts",
     "test:hybrid": "tsx --env-file=.env.local scripts/test-hybrid-search.ts",
     "test:rerank": "tsx --env-file=.env.local scripts/test-rerank.ts",
-    "test:pipeline": "tsx --env-file=.env.local scripts/test-search-pipeline.ts"
+    "test:pipeline": "tsx --env-file=.env.local scripts/test-search-pipeline.ts",
+    "generate:golden": "tsx --env-file=.env.local scripts/generate-golden-dataset.ts",
+    "eval": "tsx --env-file=.env.local scripts/eval.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.71",
     "@ai-sdk/openai": "^3.0.53",
     "@ai-sdk/react": "^3.0.179",
+    "@anthropic-ai/sdk": "^0.95.2",
     "@supabase/supabase-js": "^2.105.3",
     "ai": "^6.0.177",
     "cohere-ai": "^8.0.0",
     "gray-matter": "^4.0.3",
     "next": "16.2.4",
     "openai": "^6.36.0",
+    "p-limit": "^7.3.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "remark-gfm": "^4.0.1",
