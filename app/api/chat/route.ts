@@ -1,4 +1,4 @@
-import { searchKnowledge } from "@/features/chat/earchKnowledge";
+import { searchKnowledge } from "@/features/chat/searchKnowledge";
 import { anthropic } from "@ai-sdk/anthropic";
 import { convertToModelMessages, stepCountIs, streamText, UIMessage } from "ai";
 

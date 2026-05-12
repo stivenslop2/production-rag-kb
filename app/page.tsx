@@ -1,54 +1,21 @@
-"use client";
+import { LandingHeader } from "@/features/landing/LandingHeader";
+import { LandingHero } from "@/features/landing/LandingHero";
+import { LandingSkills } from "@/features/landing/LandingSkills";
+import { LandingTryIt } from "@/features/landing/LandingTryIt";
+import { LandingHowItWorks } from "@/features/landing/LandingHowItWorks";
+import { LandingFooter } from "@/features/landing/LandingFooter";
 
-import { useChat } from "@ai-sdk/react";
-import { DefaultChatTransport } from "ai";
-import { useEffect, useRef } from "react";
-import { ChatMessage } from "../features/chat/components/ChatMessage";
-import { ChatInput } from "../features/chat/components/ChatInput";
-import { EmptyState } from "../features/chat/components/EmptyState";
-
-export default function Home() {
-  const { messages, sendMessage, status } = useChat({
-    transport: new DefaultChatTransport({ api: "/api/chat" }),
-  });
-
-  const bottomRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
-  const isBusy = status === "submitted" || status === "streaming";
-  const isEmpty = messages.length === 0;
-
+export default function HomePage() {
   return (
-    <div className="flex flex-col h-screen bg-slate-50">
-      <header className="border-b border-slate-200 bg-white px-6 py-4">
-        <div className="mx-auto max-w-3xl">
-          <h1 className="text-lg font-semibold text-slate-900">
-            Orbiill Docs Assistant
-          </h1>
-          <p className="text-xs text-slate-500">
-            RAG over Orbiill documentation · hybrid search + Cohere rerank
-          </p>
-        </div>
-      </header>
-
-      <main className="flex-1 overflow-y-auto">
-        <div className="mx-auto max-w-3xl px-6 py-6 space-y-6">
-          {isEmpty ? (
-            <EmptyState onSuggestionClick={(text) => sendMessage({ text })} />
-          ) : (
-            messages.map((m) => <ChatMessage key={m.id} message={m} />)
-          )}
-          <div ref={bottomRef} />
-        </div>
+    <>
+      <LandingHeader />
+      <main className="bg-surface-muted">
+        <LandingHero />
+        <LandingSkills />
+        <LandingTryIt />
+        <LandingHowItWorks />
       </main>
-
-      <ChatInput
-        onSubmit={(text) => sendMessage({ text })}
-        disabled={isBusy}
-      />
-    </div>
+      <LandingFooter />
+    </>
   );
 }

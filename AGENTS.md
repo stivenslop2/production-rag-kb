@@ -23,22 +23,26 @@ All code, UI strings, and comments are in English.
 app/                        Routing + thin page wrappers only
   api/
     chat/route.ts           POST — streaming chat with RAG context
-    search/route.ts         POST — search endpoint (vector/hybrid/rerank)
-  chat/page.tsx             Chat interface
-  search/page.tsx           Search explorer with retrieval traces
+  page.tsx                  Landing page (thin composition of features/landing/*)
+  chat/page.tsx             Chat interface (/chat)
+  search/page.tsx           [planned] Search explorer with retrieval traces — not yet implemented
 features/
   ingestion/                Document chunking, embedding, and DB storage
   retrieval/                Vector search, BM25, RRF fusion, reranking
-  chat/                     Chat UI components
-  eval/                     Golden dataset, metrics, eval runner
-  landing/                  Landing page components
+  chat/                     Chat UI components + searchKnowledge tool
+  eval/                     Metrics (precision@k, MRR, NDCG) + golden-set runner
+  landing/                  Landing page components (Header, Hero, Skills, TryIt, HowItWorks, Footer)
 shared/
   lib/                      Library wrappers (supabase, embeddings, cohere)
-  types/                    Cross-feature types
+  types/                    Cross-feature types (search, document)
 data/
   docs/                     Raw markdown — Orbiill documentation corpus
+  eval/                     Golden dataset (golden.json)
 scripts/
-  ingest.ts                 CLI ingestion script (npm run ingest)
+  ingest.ts                 CLI ingestion (npm run ingest)
+  eval.ts                   CLI eval runner (npm run eval) — thin wrapper around features/eval
+  generate-golden-dataset.ts  CLI to synthesize the golden set
+  verify-*.ts               Manual CLI smoke checks for each retrieval layer (not an automated test suite)
 \`\`\`
 
 - Routes under `app/` import from `features/` or `shared/`. No feature code in `app/`.

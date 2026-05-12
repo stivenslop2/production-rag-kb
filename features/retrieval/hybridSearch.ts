@@ -1,6 +1,6 @@
 import { bm25Search } from "./bm25Search";
 import { vectorSearch } from "./vectorSearch";
-import { HybridSearchResult, SearchResult } from "./types";
+import { HybridSearchResult, SearchResult } from "@/shared/types";
 
 const RRF_K = 60;
 const DEFAULT_CANDIDATES_PER_SEARCH = 20;
