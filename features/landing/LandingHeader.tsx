@@ -6,7 +6,7 @@ export function LandingHeader() {
           Production RAG · Orbiill Docs
         </p>
         <a
-          href="https://stivenslop-staging.up.railway.app"
+          href="https://stivenslop.up.railway.app"
           className="text-sm text-ink-muted hover:text-brand-600 transition-colors"
         >
           <span aria-hidden>&larr;</span> Portfolio
