@@ -2,7 +2,7 @@
 
 > Retrieval-augmented chatbot with hybrid search, reranking, and an eval harness.
 
-🔗 **[Live demo](https://production-rag-kb.up.railway.app/)** · 📂 **[Portfolio](https://julianlopez.dev)** · 💻 **[Source on GitHub](https://github.com/stivenslop2/production-rag-kb)**
+🔗 **[Live demo](https://production-rag-kb.up.railway.app/)** · 📂 **[Portfolio](https://stivenslop-staging.up.railway.app)** · 💻 **[Source on GitHub](https://github.com/stivenslop2/production-rag-kb)**
 
 ---
 
@@ -141,6 +141,6 @@ npm run verify:pipeline   # End-to-end retrieval pipeline check
 ## About
 
 Built by **Julian Lopez** — AI Engineer · Full Stack.
-[Portfolio](https://julianlopez.dev) · [LinkedIn](https://www.linkedin.com/in/jstivenslopez/) · [GitHub](https://github.com/stivenslop2)
+[Portfolio](https://stivenslop-staging.up.railway.app) · [LinkedIn](https://www.linkedin.com/in/jstivenslopez/) · [GitHub](https://github.com/stivenslop2)
 
 License: MIT
