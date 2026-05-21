@@ -2,7 +2,7 @@
 
 > Retrieval-augmented chatbot with hybrid search, reranking, and an eval harness.
 
-🔗 **[Live demo](https://production-rag-kb.up.railway.app/)** · 📂 **[Portfolio](https://julianlopez.dev)** · 💻 **[Source on GitHub](https://github.com/stivenslop2/production-rag-kb)**
+🔗 **[Live demo](https://portfolioproduction-rag-kb-staging.up.railway.app/)** · 📂 **[Portfolio](https://julianlopez.dev)** · 💻 **[Source on GitHub](https://github.com/stivenslop2/production-rag-kb)**
 
 ---
 
