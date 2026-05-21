@@ -11,7 +11,7 @@ Production RAG Knowledge Base — a portfolio project demonstrating production-g
 - Hybrid search: BM25 (PostgreSQL tsvector) + vector (pgvector) with RRF fusion
 - Reranking with Cohere Rerank API
 - Strategic chunking: recursive text splitting with overlap
-- Retrieval metrics: precision@k, MRR, NDCG with a 50-question golden dataset
+- Retrieval metrics: precision@k, MRR, NDCG with a 74-query golden dataset
 - Streaming chat with Vercel AI SDK v6 + tool-calling RAG pipeline
 - Eval automation runnable via `npm run eval`
 
@@ -67,7 +67,7 @@ scripts/
 - **Ingestion pipeline** — `npm run ingest` reads `data/docs/*.md`, applies recursive chunking, generates embeddings via `text-embedding-3-small`, stores chunks with text + vector in Supabase.
 - **Hybrid search** — vector search (cosine similarity) + BM25 (tsvector) combined via RRF.
 - **Reranking** — Cohere Rerank API reorders top candidates for final retrieval.
-- **Eval** — `npm run eval` runs 50 golden-dataset queries, computes precision@k, MRR, NDCG.
+- **Eval** — `npm run eval` runs 74 golden-dataset queries, computes precision@k, MRR, NDCG.
 
 ## Secrets
 

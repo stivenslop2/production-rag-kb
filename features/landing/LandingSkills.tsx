@@ -26,7 +26,7 @@ const TECHNIQUES: Technique[] = [
   {
     name: "Eval automation",
     description:
-      "50-question golden set with literal and conversational query variants. Each retrieval strategy (bm25, vector, hybrid, hybrid+rerank) is scored on precision@5, MRR, NDCG, and difficulty-stratified hit rates.",
+      "74-query golden set with literal and conversational query variants. Each retrieval strategy (bm25, vector, hybrid, hybrid+rerank) is scored on precision@5, MRR, NDCG, and difficulty-stratified hit rates.",
     location: "features/eval/runner.ts · features/eval/metrics.ts · scripts/eval.ts",
   },
   {

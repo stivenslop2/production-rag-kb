@@ -8,7 +8,7 @@
 
 ## The problem it solves
 
-Developer-facing documentation is hard to navigate at the moment a user actually has a question. Vector search alone misses exact identifiers (error codes, status names, SDK method names); keyword search alone misses paraphrased questions. This project answers questions about Orbiill — a fictional billing platform — by combining BM25 and vector retrieval, reranking the top candidates, and only then handing cited chunks to a tool-calling agent. Every retrieval strategy is measured against a 50-question golden dataset, so improvements are quantified rather than vibed.
+Developer-facing documentation is hard to navigate at the moment a user actually has a question. Vector search alone misses exact identifiers (error codes, status names, SDK method names); keyword search alone misses paraphrased questions. This project answers questions about Orbiill — a fictional billing platform — by combining BM25 and vector retrieval, reranking the top candidates, and only then handing cited chunks to a tool-calling agent. Every retrieval strategy is measured against a 74-query golden dataset, so improvements are quantified rather than vibed.
 
 ---
 
@@ -20,7 +20,7 @@ Developer-facing documentation is hard to navigate at the moment a user actually
 | Reranking | Top-20 hybrid candidates rescored by the Cohere Rerank API before final selection | `features/retrieval/rerank.ts`, `features/retrieval/searchPipeline.ts` |
 | Tool-calling RAG agent | Claude Haiku 4.5 invokes `searchKnowledge` on demand, reformulates queries, and classifies result confidence (high/medium/low). Loop capped by `stepCountIs(5)` | `app/api/chat/route.ts`, `features/chat/searchKnowledge.ts` |
 | Strategic chunking | Recursive heading-aware splitting (~1000 char target, 200 char overlap) with frontmatter parsing | `features/ingestion/chunker.ts` |
-| Eval automation | 50-question golden set with literal and conversational query variants; precision@5, MRR, NDCG, plus difficulty-stratified hit rates per strategy | `features/eval/runner.ts`, `features/eval/metrics.ts`, `scripts/eval.ts` |
+| Eval automation | 74-query golden set with literal and conversational query variants; precision@5, MRR, NDCG, plus difficulty-stratified hit rates per strategy | `features/eval/runner.ts`, `features/eval/metrics.ts`, `scripts/eval.ts` |
 
 ---
 
@@ -120,7 +120,7 @@ Required environment variables (see `env.example`):
 ```bash
 npm run dev               # Next.js dev server
 npm run ingest            # Re-ingest data/docs/*.md
-npm run eval              # Run the 50-question golden eval across 4 strategies
+npm run eval              # Run the 74-query golden eval across 4 strategies
 npm run generate:golden   # Regenerate the golden dataset
 npm run verify:hybrid     # Manual smoke check for hybrid search
 npm run verify:rerank     # Manual smoke check for the rerank step

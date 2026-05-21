@@ -24,7 +24,7 @@ export function LandingHero() {
         built with the patterns I reach for in production: BM25 + vector search
         fused with RRF, Cohere reranking, and a tool-calling agent that decides
         when to retrieve. Every retrieval strategy is measured against a
-        50-question golden dataset.
+        74-query golden dataset.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-2">
